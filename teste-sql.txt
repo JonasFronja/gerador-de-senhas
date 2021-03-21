@@ -1,0 +1,9 @@
+Seu nome: Jonas Fronja
+
+1)SELECT id_filme, MIN(data_lancamento) AS 'data_lancamento',nome,descricao FROM en_filme;
+
+2)SELECT c.*,(SELECT count(*) FROM en_aluguel a WHERE a.id_cliente = c.id_cliente) AS 'alugueis' FROM en_cliente c ORDER BY alugueis;
+
+3)SELECT a.id_cliente,c.nome AS nome,YEAR(data_aluguel) AS ano,COUNT(*) AS alugueis,round(SUM(valor),2) AS valor FROM en_aluguel a 
+LEFT JOIN en_cliente c ON a.id_cliente = c.id_cliente 
+GROUP BY ano,id_cliente ORDER BY valor DESC;
